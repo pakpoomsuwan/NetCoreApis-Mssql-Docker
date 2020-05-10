@@ -10,6 +10,12 @@ namespace NetCoreApis_Mssql_Docker.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        private readonly IAuthService _authService;
+        public AuthController(IAuthService authService)
+        {
+            _authService = authService;
+        }
+
         /// <summary>
         /// login
         /// </summary>
