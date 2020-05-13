@@ -1,4 +1,4 @@
-namespace NetCoreApis_Mssql_Docker.Repositorys.Impl
+namespace NetCoreApis_Mssql_Docker.Repositorys
 {
     public interface IAuthRepository
     {

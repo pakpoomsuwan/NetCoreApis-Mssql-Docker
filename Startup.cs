@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using NetCoreApis_Mssql_Docker.Repositorys.Impl;
 using NetCoreApis_Mssql_Docker.Services.Impl;
 
 namespace NetCoreApis_Mssql_Docker
@@ -61,7 +60,6 @@ namespace NetCoreApis_Mssql_Docker
             });
 
             // DI
-            services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IAuthService, AuthService>();
         }
 

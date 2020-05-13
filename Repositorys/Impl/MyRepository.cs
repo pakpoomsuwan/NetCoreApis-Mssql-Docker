@@ -1,8 +1,8 @@
 namespace NetCoreApis_Mssql_Docker.Repositorys.Impl
 {
-    public class AuthRepository : IAuthRepository
+    public class MyRepository : IMyRepository
     {
-        public AuthRepository()
+        public MyRepository()
         {
             
         }
