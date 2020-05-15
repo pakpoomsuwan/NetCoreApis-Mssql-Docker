@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +7,7 @@ using NetCoreApis_Mssql_Docker.Models.Auth;
 namespace NetCoreApis_Mssql_Docker.Controllers
 {
     [Produces("application/json")]
-    [Route("api")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -37,7 +38,18 @@ namespace NetCoreApis_Mssql_Docker.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] Login req)
         {
-            return Ok(new { result = true, resultmessage = "not impliment yet!" });
+            try
+            {
+                if(!ModelState.IsValid)
+                    return BadRequest();
+
+                var r = _authService.Login(req);
+                return Ok(new { result = true, resultmessage = r });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { result = false, resultmessage = ex.Message });
+            }
         }
     }
 }

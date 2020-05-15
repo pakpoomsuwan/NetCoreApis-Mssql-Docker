@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NetCoreApis_Mssql_Docker.Repositorys;
+using NetCoreApis_Mssql_Docker.Repositorys.Impl;
 using NetCoreApis_Mssql_Docker.Services.Impl;
 
 namespace NetCoreApis_Mssql_Docker
@@ -39,17 +41,17 @@ namespace NetCoreApis_Mssql_Docker
                     Version = "v1",
                     Title = "My API",
                     Description = "A simple example ASP.NET Core Web API",
-                    TermsOfService = new Uri("https://example.com/terms"),
+                    TermsOfService = new Uri("https://linkedin.com/in/pakpoom-suwan-408718173"),
                     Contact = new OpenApiContact
                     {
-                        Name = "Shayne Boyer",
+                        Name = "Pakpoom Suwan",
                         Email = string.Empty,
-                        Url = new Uri("https://twitter.com/spboyer"),
+                        Url = new Uri("https://linkedin.com/in/pakpoom-suwan-408718173"),
                     },
                     License = new OpenApiLicense
                     {
-                        Name = "Use under LICX",
-                        Url = new Uri("https://example.com/license"),
+                        Name = "My OpenAPI",
+                        Url = new Uri("https://linkedin.com/in/pakpoom-suwan-408718173"),
                     }
                 });
 
@@ -61,6 +63,8 @@ namespace NetCoreApis_Mssql_Docker
 
             // DI
             services.AddScoped<IAuthService, AuthService>();
+
+            services.AddScoped<IAuthRepository, AuthRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
