@@ -4,6 +4,7 @@ NetCoreApis-Mssql
 # Nuget Packages
 - Swashbuckle.AspNetCore
 - Microsoft.EntityFrameworkCore.SqlServer
+- Microsoft.EntityFrameworkCore.Design
 - AutoMapper.Extensions.Microsoft.DependencyInjection
 - Microsoft.AspNetCore.Authentication.JwtBearer
 - Microsoft.AspNetCore.Mvc.NewtonsoftJson
