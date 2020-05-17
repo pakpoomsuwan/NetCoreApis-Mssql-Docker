@@ -19,4 +19,11 @@ NetCoreApis-Mssql
 - docker start <container id or container name>
 
 # Scaffold Mssql
+- dotnet tool install --global dotnet-ef --version 3.1.4
 - dotnet ef dbcontext scaffold 'Server=localhost,1112;user id=sa; password=Password!; Database=Northwind' Microsoft.EntityFrameworkCore.SqlServer -o DbModels -c DatabaseContext --context-dir Database
+
+# Run the app
+- dotnet run
+
+# Running tests
+- dotnet watch run
