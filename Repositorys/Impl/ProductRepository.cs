@@ -18,7 +18,7 @@ namespace NetCoreApis_Mssql_Docker.Repositorys.Impl
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Product>> Product()
+        public IEnumerable<Product> Product()
         {
             var _products = _db.Products.ToList();
             var result = _mapper.Map<IEnumerable<Product>>(_products);

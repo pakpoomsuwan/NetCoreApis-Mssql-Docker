@@ -13,9 +13,9 @@ namespace NetCoreApis_Mssql_Docker.Services.Impl
             _repo = repository;
         }
 
-        public async Task<IEnumerable<Product>> Product()
+        public IEnumerable<Product> Product()
         {
-            return await _repo.Product();
+            return _repo.Product();
         }
     }
 }

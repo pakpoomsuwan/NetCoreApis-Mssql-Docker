@@ -48,11 +48,10 @@ namespace NetCoreApis_Mssql_Docker.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=localhost,1112;user id=sa; password=Tel1234!; Database=Northwind");
-            }
+            // if (!optionsBuilder.IsConfigured)
+            // {
+            //     optionsBuilder.UseSqlServer("Server=localhost,1112;user id=sa; password=Tel1234!; Database=Northwind");
+            // }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

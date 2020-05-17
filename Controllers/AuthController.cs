@@ -12,11 +12,12 @@ namespace NetCoreApis_Mssql_Docker.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly ILogger<AuthController> _logger;
+        ILogger<AuthController> _logger;
         private readonly IAuthService _authService;
         public AuthController(ILogger<AuthController> logger, IAuthService authService)
         {
             _authService = authService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -50,6 +51,7 @@ namespace NetCoreApis_Mssql_Docker.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError("Failed to login");
                 return Ok(new { result = false, resultmessage = ex.Message });
             }
         }

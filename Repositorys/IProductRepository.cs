@@ -7,6 +7,6 @@ namespace NetCoreApis_Mssql_Docker.Repositorys
 {
     public interface IProductRepository
     {
-         Task<IEnumerable<Product>> Product();
+        IEnumerable<Product> Product();
     }
 }
