@@ -1,6 +1,13 @@
 # NetCoreApis-Mssql-Docker
 NetCoreApis-Mssql
 
+# Nuget Packages
+- Swashbuckle.AspNetCore
+- Microsoft.EntityFrameworkCore.SqlServer
+- AutoMapper.Extensions.Microsoft.DependencyInjection
+- Microsoft.AspNetCore.Authentication.JwtBearer
+- Microsoft.AspNetCore.Mvc.NewtonsoftJson
+
 # Pull Images
 - Docker pull mcr.microsoft.com/mssql/server:2017-CU14-ubuntu Docker pull mcr.microsoft.com/dotnet/core/sdk:3.0
 - Docker pull mcr.microsoft.com/dotnet/core/aspnet:3.0
