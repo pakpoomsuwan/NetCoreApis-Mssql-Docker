@@ -19,11 +19,17 @@ namespace NetCoreApis_Mssql_Docker.Controllers
             _productService = productService;
         }
 
+        [HttpGet("{productid}")]
+        public IActionResult Product(int productId){
+            var result = _productService.GetProductById(productId);
+            return Ok(result);
+        }
+
         [HttpGet("list")]
-        public IActionResult Product()
+        public IActionResult Products()
         {
-            var _r = _productService.Product();
-            return Ok(_r);
+            var result = _productService.GetAllProducts();
+            return Ok(result);
         }
     }
 }

@@ -18,10 +18,17 @@ namespace NetCoreApis_Mssql_Docker.Repositorys.Impl
             _mapper = mapper;
         }
 
-        public IEnumerable<Product> Product()
+        public IEnumerable<Product> GetAllProducts()
         {
-            var _products = _db.Products.ToList();
-            var result = _mapper.Map<IEnumerable<Product>>(_products);
+            var products = _db.Products.ToList();
+            var result = _mapper.Map<IEnumerable<Product>>(products);
+            return result;
+        }
+
+        public Product GetProductById(int productId)
+        {
+            var product = _db.Products.SingleOrDefault(c => c.ProductId.Equals(productId));
+            var result = _mapper.Map<Product>(product);
             return result;
         }
     }
