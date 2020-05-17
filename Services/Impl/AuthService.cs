@@ -2,6 +2,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using NetCoreApis_Mssql_Docker.Models.Auth;
 using NetCoreApis_Mssql_Docker.Repositorys;
@@ -10,10 +11,12 @@ namespace NetCoreApis_Mssql_Docker.Services.Impl
 {
     public class AuthService : IAuthService
     {
+        private readonly IConfiguration _config;
         private readonly IAuthRepository _repo;
-        public AuthService(IAuthRepository repository)
+        public AuthService(IAuthRepository repository, IConfiguration configuration)
         {
             _repo = repository;
+            _config = configuration;
         }
         public string Login(Login req)
         {
@@ -32,13 +35,13 @@ namespace NetCoreApis_Mssql_Docker.Services.Impl
                 new Claim(ClaimTypes.Role, req.Password)
             };
 
-            var expires = DateTime.Now.AddDays(Convert.ToDouble("30"));
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Pakp00m.NetCore777"));
+            var expires = DateTime.Now.AddDays(Convert.ToDouble(_config["Jwt:ExpireDay"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                issuer: "Pakpoom Suwan",
-                audience: "http://codemobiles.com",
+                issuer: _config["Jwt:Issuer"],
+                audience: _config["Jwt:Audience"],
                 claims: claims,
                 expires: expires,
                 signingCredentials: creds

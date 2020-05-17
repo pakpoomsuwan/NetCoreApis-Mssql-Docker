@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using NetCoreApis_Mssql_Docker.Models.Auth;
 
 namespace NetCoreApis_Mssql_Docker.Controllers
@@ -11,8 +12,9 @@ namespace NetCoreApis_Mssql_Docker.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        private readonly ILogger<AuthController> _logger;
         private readonly IAuthService _authService;
-        public AuthController(IAuthService authService)
+        public AuthController(ILogger<AuthController> logger, IAuthService authService)
         {
             _authService = authService;
         }
