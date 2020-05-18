@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace NetCoreApis_Mssql_Docker
 {
-    #pragma warning disable CS1591
+#pragma warning disable CS1591
     public class Program
     {
         public static void Main(string[] args)
@@ -20,10 +20,25 @@ namespace NetCoreApis_Mssql_Docker
 
         public static IWebHostBuilder CreateHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .ConfigureKestrel(options =>{
+                .ConfigureAppConfiguration((HostingAbstractionsHostExtensions, config) =>
+                {
+                    config.Sources.Clear();
+
+                    var env = HostingAbstractionsHostExtensions.HostingEnvironment;
+
+                    config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+
+                    config.AddEnvironmentVariables();
+
+                    if (args != null)
+                        config.AddCommandLine(args);
+                })
+                .ConfigureKestrel(options =>
+                {
                     options.Limits.MaxResponseBufferSize = int.MaxValue;
                 })
                 .UseStartup<Startup>();
     }
-    #pragma warning restore CS1591
+#pragma warning restore CS1591
 }
