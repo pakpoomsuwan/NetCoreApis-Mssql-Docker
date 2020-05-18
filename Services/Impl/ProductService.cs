@@ -18,9 +18,9 @@ namespace NetCoreApis_Mssql_Docker.Services.Impl
             return _repo.GetAllProducts();
         }
 
-        public Product GetProductById(int productId)
+        public Product GetProductById(int id)
         {
-            return _repo.GetProductById(productId);
+            return _repo.GetProductById(id);
         }
     }
 }

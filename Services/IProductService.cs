@@ -7,6 +7,6 @@ namespace NetCoreApis_Mssql_Docker.Services
     public interface IProductService
     {
         IEnumerable<Product> GetAllProducts();
-        Product GetProductById(int productId);
+        Product GetProductById(int id);
     }
 }

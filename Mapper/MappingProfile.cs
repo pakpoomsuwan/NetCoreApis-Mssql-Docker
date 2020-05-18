@@ -8,7 +8,9 @@ namespace NetCoreApis_Mssql_Docker.Mapper
     {
         public MappingProfile()
         {
+            // Products
             CreateMap<Products, _models.Products.Product>();
+            CreateMap<_models.Products.Product, Products>();
         }
     }
 }
