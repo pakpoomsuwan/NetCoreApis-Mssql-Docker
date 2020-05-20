@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NetCoreApis_Mssql_Docker.Services;
@@ -19,12 +20,26 @@ namespace NetCoreApis_Mssql_Docker.Controllers
             _productService = productService;
         }
 
+        /// <summary>
+        /// Get product
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <responsecode code="200"> Return product </responsecode>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("{id}")]
         public IActionResult GetProduct(int id){
             var result = _productService.GetProductById(id);
             return Ok(result);
         }
 
+        /// <summary>
+        /// Get products
+        /// </summary>
+        /// <returns></returns>
+        /// <responsecode code="200"> Return products </responsecode>
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet("list")]
         public IActionResult GetProducts()
         {

@@ -12,7 +12,7 @@ namespace NetCoreApis_Mssql_Docker.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        ILogger<AuthController> _logger;
+        private readonly ILogger<AuthController> _logger;
         private readonly IAuthService _authService;
         public AuthController(ILogger<AuthController> logger, IAuthService authService)
         {
